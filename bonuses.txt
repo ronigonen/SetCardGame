@@ -1,0 +1,53 @@
+BONUS CHALLENGE FORM
+--------------------
+
+For each bonus challenge you have implemented, please replace the sentence "We are not entitled to this bonus."
+with a short description of:
+
+1. How it was implemented in your code
+2. Where it was used (in which class methods).
+3. How you tested that it is working correctly.
+
+--------------------
+
+1. Fully supporting all configuration fields and avoiding the use of magic numbers
+
+1. We used all the configuration properties instead of magic numbers.
+2. It was used in the class Player:
+    -In the Ai thread where we used the tableSize to random a number.
+    -In the run method where we checked the amount of actions/slots using featureSize.
+    -In the penalty and point functions where we used the freeze times.
+   It was used in the class Dealer:
+    -In order to update the timer display using the turnTimeOutMillies.
+    -In the placeCardsOnTable, and removeAllCardsFromTable in order to run on all slots in the game using tableSize.
+    -In the announceWinner method before the game ends, pauses for endGamePauseMillies.
+   It was used in the class Table:
+    -In order to set the tableSize.
+    -In order to set the number of players.
+    -In order to set the deckSize.
+    -In the placeCard and removeCard methods in order to pause for tableDelayMillies.
+3. We checked that there is no additional magic numbers, and we changed the config.properties and checked that it works correspondingly to it.
+--------------------
+
+2. Terminating all threads (that you created) gracefully and in reverse order to the order they were created in.
+
+1. In the function terminate in the class Dealer we terminated the players by the opposite order of creating them
+   (while creating the player threads it creates them from index 0 to the number of players, and while terminating them it terminates from the last player to the first).
+2. It was used in the Dealer class (as it was mentioned in answer 1.).
+3. While debugging, we saw that it terminates the last player first.
+--------------------
+
+3. Handling the config.turnTimeoutMillis value as follows:
+config.turnTimeoutMillis < 0: display nothing.
+config.turnTimeoutMillis = 0: display a timer since the last action (reshuffle or set collected).
+Note: in modes without a countdown timer the dealer must ensure there is always at least one legal set on the table.
+
+We are not entitled to this bonus.
+
+--------------------
+
+4. Making sure that the threads do not wake up unless some actual job needs to be done (e.g., a value needs to be
+changed on the display, key input needs to be handled, etc.) and the only threads created by you are:
+1 thread per player + 1 additional thread for non-human players.
+
+We are not entitled to this bonus.
